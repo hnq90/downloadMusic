@@ -17,7 +17,7 @@ download music from all website
 ```
 python download.py <link>
 ```
-**link: có thẻ là link cả một album hoặc một bài hát đơn**
+**link: có thể là một album hoặc một bài hát đơn**
 
 **Ví dụ**
 
