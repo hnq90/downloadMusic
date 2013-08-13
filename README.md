@@ -11,7 +11,7 @@ download music from all website
 - nhac.vui.vn
 - yeucahat.com (update)
 - youtube.com (update)
-- chiasenhac.com (update)
+- chiasenhac.com
 
 ## Hướng dẫn sử dụng 
 ```
