@@ -15,7 +15,8 @@ class hrequest:
     def __init__(self):
         self.hr_cookie = CookieJar()
         self.hr_opener = build_opener(HTTPCookieProcessor(self.hr_cookie), HTTPHandler())
-        self.hr_headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0','Referer': 'https://www.facebook.com/'}
+        self.hr_headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0','Referer': 'https://www.facebook.com/',
+                           'Cookie': 'mq=i%3A500%3B;',}
     #----------------------------------------------------------------------
     def request(self, url, data, HTMLResponse=True):
         if data:            

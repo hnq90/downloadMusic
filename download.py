@@ -23,26 +23,26 @@ from urllib2 import Request, HTTPError, urlopen
 #----------------------------------------------------------------------
 def wget(url, file_name):
     try:
-	u = urlopen(url)
-	f = open(file_name, 'wb')
-	meta = u.info()
-	file_size = int(meta.getheaders("Content-Length")[0])
-	print "Downloading: %s Bytes: %s" % (file_name, file_size)
-	file_size_dl = 0
-	block_sz = 8192
-	while True:
-	    buffer = u.read(block_sz)
-	    if not buffer:
-		break	
-	    file_size_dl += len(buffer)
-	    f.write(buffer)
-	    status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
-	    status = status + chr(8)*(len(status)+1)
-	    print status
-	f.close()
+        u = urlopen(url)
+        f = open(file_name, 'wb')
+        meta = u.info()
+        file_size = int(meta.getheaders("Content-Length")[0])
+        print "Downloading: %s Bytes: %s" % (file_name, file_size)
+        file_size_dl = 0
+        block_sz = 8192
+        while True:
+            buffer = u.read(block_sz)
+            if not buffer:
+                break
+            file_size_dl += len(buffer)
+            f.write(buffer)
+            status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
+            status = status + chr(8)*(len(status)+1)
+            print status
+        f.close()
     except HTTPError, e:    
-	print "Error: " + str(e.code)
-    
+        print "Error: " + str(e.code)
+
 if len(sys.argv) > 1:
     url = sys.argv[1]
     print "Download: " + url
@@ -52,15 +52,15 @@ if len(sys.argv) > 1:
         from hsite import *
         cookie, html = h.request(url, data=None, HTMLResponse=True)
         try:
-	    domain = eval(domain)
-	    mp3 = domain.MP3(html)
-	    hlist = mp3.parse()
-	    for item in hlist:
-		title, artist, source = item
-		source = source.strip()
-		print "\t[+] " + title.strip()
-		file_name = title.strip().replace(' ', '-')
-		wget(source, file_name)
+            domain = eval(domain)
+            mp3 = domain.MP3(html)
+            hlist = mp3.parse()
+            for item in hlist:
+                title, artist, source = item
+                source = source.strip()
+                print "\t[+] " + title.strip()
+                file_name = title.strip().replace(' ', '-')
+                wget(source, file_name)
         except:
             print 'Can not parse ' + str(domain)    
 else:
